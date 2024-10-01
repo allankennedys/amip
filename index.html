@@ -2,30 +2,130 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="imagens/AMIP.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
     <title>AMIP Energia Solar - Simule sua economia mensal</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-image: url('https://img.freepik.com/fotos-premium/paineis-de-energia-de-energia-renovavel-de-energia-solar-com-vista-para-o-por-do-sol_693425-10292.jpg?w=996'); /* Substitua pela URL da imagem */
+            background-size: cover; 
+            background-position: center;
+            margin: 0;
+            padding: 51px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #333;
+        }
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            color: #ffffff;
+            margin-bottom: 20px;
+            font-size: 2.5rem; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+        label {
+            margin-top: 15px;
+            font-weight: bold;
+            display: block;
+            text-align: left;
+            color: #555;
+        }
+        input {
+            width: calc(100% - 20px);
+            padding: 12px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+            background-color: #f9f9f9;
+        }
+        input:focus {
+            border-color: #0056b3;
+            outline: none;
+            background-color: #fff;
+        }
+        button {
+            margin-top: 20px;
+            padding: 12px;
+            background-color: #394149;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s, transform 0.2s;
+            width: 100%;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        button:hover {
+            background-color: #0056b3;
+            transform: scale(1.02);
+        }
+        #resultado {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e0f7fa;
+            border: 1px solid #b2ebf2;
+            border-radius: 6px;
+            font-size: 18px;
+            color: #00796b;
+            display: none; 
+        }
+        img {
+            display: block;
+            margin: 30px auto;
+            max-width: 150px;
+        }
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            .container {
+                padding: 20px;
+            }
+            button {
+                padding: 10px;
+            }
+        }
+    </style>
 </head>
 <body>
     <h1>Calculadora de Economia Mensal</h1>
 
-    <label for="consumoDiario">Consumo Diário de Energia (kWh):</label>
-    <input type="number" id="consumoDiario" name="consumoDiario" placeholder="Ex: 10"><br>
+    <div class="container">
+        <label for="consumoDiario">Consumo Diário de Energia (kWh):</label>
+        <input type="number" id="consumoDiario" name="consumoDiario" placeholder="Ex: 10" required>
 
-    <label for="tarifaEnergia">Tarifa de Energia (R$/kWh):</label>
-    <input type="number" step="0.01" id="tarifaEnergia" name="tarifaEnergia" placeholder="Ex: 0.60"><br>
+        <label for="tarifaEnergia">Tarifa de Energia (R$/kWh):</label>
+        <input type="number" step="0.01" id="tarifaEnergia" name="tarifaEnergia" placeholder="Ex: 0.60" required>
 
-    <label for="eficiencia">Eficiência dos Painéis (%):</label>
-    <input type="number" step="0.01" id="eficiencia" name="eficiencia" placeholder="Ex: 85"><br>
+        <label for="eficiencia">Eficiência dos Painéis (%):</label>
+        <input type="number" step="0.01" id="eficiencia" name="eficiencia" placeholder="Ex: 85" required>
 
-    <label for="diasMes">Número de Dias no Mês:</label>
-    <input type="number" id="diasMes" name="diasMes" placeholder="Ex: 30"><br>
+        <label for="diasMes">Número de Dias no Mês:</label>
+        <input type="number" id="diasMes" name="diasMes" placeholder="Ex: 30" required>
 
-    <button onclick="calcularEconomiaMensal()">Calcular Economia Mensal</button> <!--onclick="calcularEconomiaMensal() permite que o javascript entre em ação quando o usuário clica no botão -->
+        <button onclick="calcularEconomiaMensal()">Calcular Economia Mensal</button>
 
-    <div id="resultado"></div>
-    <img src="imagens/AMIP.png" alt="logotipo AMIP">
-
+        <div id="resultado"></div>
+    </div>
+    
 
     <script src="script.js"></script>
 </body>
